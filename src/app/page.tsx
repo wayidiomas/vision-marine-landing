@@ -79,9 +79,9 @@ export default function Home() {
           <div className="absolute right-20 top-40 w-16 h-16 rounded-full bg-[#4cb7e0] blur lg:hidden"></div>
         </div>
 
-        <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-10 xl:gap-12 w-full max-w-7xl mx-auto">
+        <div className="relative flex flex-col lg:flex-row lg:items-stretch lg:justify-between gap-8 lg:gap-10 xl:gap-12 w-full max-w-7xl mx-auto">
           {/* Content */}
-          <div className="flex flex-col gap-8 w-full lg:w-1/2 lg:flex-shrink-0">
+          <div className="flex flex-col justify-center gap-8 w-full lg:w-1/2 lg:flex-shrink-0">
             {/* Main Heading */}
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
@@ -159,46 +159,48 @@ export default function Home() {
           </div>
 
           {/* Right Content - Card (Desktop) */}
-          <div className="w-full lg:w-1/2 flex-shrink-0 hidden lg:block">
-            <div className="bg-gradient-to-r from-[#4cb7e0] to-[#3a9bc1] p-8 rounded-2xl">
-              <div className="bg-white p-6 rounded-xl">
-                <h3 className="text-xl font-bold text-[#070e2c] mb-4 leading-7">
-                  {t('card.next_class')}
-                </h3>
+          <div className="w-full lg:w-1/2 flex-shrink-0 hidden lg:flex lg:flex-col">
+            <div className="bg-gradient-to-r from-[#4cb7e0] to-[#3a9bc1] p-8 rounded-2xl h-full flex flex-col">
+              <div className="bg-white p-6 rounded-xl flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col">
+                  <h3 className="text-xl font-bold text-[#070e2c] mb-4 leading-7">
+                    {t('card.next_class')}
+                  </h3>
 
-                <div className="space-y-3 mb-4">
-                  {loading ? (
-                    // Loading skeleton
-                    Array.from({ length: 3 }).map((_, index) => (
-                      <div key={index} className="flex justify-between items-center animate-pulse">
-                        <div className="h-4 bg-gray-200 rounded w-32"></div>
-                        <div className="h-4 bg-gray-200 rounded w-12"></div>
+                  <div className="space-y-3 flex-1 flex flex-col justify-center">
+                    {loading ? (
+                      // Loading skeleton
+                      Array.from({ length: 3 }).map((_, index) => (
+                        <div key={index} className="flex justify-between items-center animate-pulse">
+                          <div className="h-4 bg-gray-200 rounded w-32"></div>
+                          <div className="h-4 bg-gray-200 rounded w-12"></div>
+                        </div>
+                      ))
+                    ) : error ? (
+                      // Error fallback
+                      <div className="text-red-600 text-sm text-center py-4">
+                        Erro ao carregar cursos
                       </div>
-                    ))
-                  ) : error ? (
-                    // Error fallback
-                    <div className="text-red-600 text-sm text-center py-4">
-                      Erro ao carregar cursos
-                    </div>
-                  ) : courses.length > 0 ? (
-                    // Dynamic data from Supabase
-                    courses.map((course) => (
-                      <div key={course.curso_id} className="flex justify-between items-center">
-                        <span className="text-[#070e2c] text-base leading-6">{course.curso_nome}</span>
-                        <span className="text-[#070e2c] text-base font-semibold leading-6">{course.data_formatada}</span>
+                    ) : courses.length > 0 ? (
+                      // Dynamic data from Supabase
+                      courses.map((course) => (
+                        <div key={course.curso_id} className="flex justify-between items-center py-2">
+                          <span className="text-[#070e2c] text-base leading-6">{course.curso_nome}</span>
+                          <span className="text-[#070e2c] text-base font-semibold leading-6">{course.data_formatada}</span>
+                        </div>
+                      ))
+                    ) : (
+                      // No courses fallback
+                      <div className="text-gray-600 text-sm text-center py-4">
+                        Nenhum curso disponível no momento
                       </div>
-                    ))
-                  ) : (
-                    // No courses fallback
-                    <div className="text-gray-600 text-sm text-center py-4">
-                      Nenhum curso disponível no momento
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
 
                 <Button
                   asChild
-                  className="w-full h-10 bg-gradient-to-r from-[#070e2c] to-[#070e2c] hover:from-[#070e2c] hover:to-[#0a1238] text-white font-semibold text-sm rounded-md transition-all duration-300"
+                  className="w-full h-10 mt-6 bg-gradient-to-r from-[#070e2c] to-[#070e2c] hover:from-[#070e2c] hover:to-[#0a1238] text-white font-semibold text-sm rounded-md transition-all duration-300"
                 >
                   <Link href="/courses">{t('card.view_all')}</Link>
                 </Button>
