@@ -1,67 +1,25 @@
-# Multi-stage build for Next.js on Render
-# Optimized for production deployment
+# Simple Dockerfile for Next.js - Single stage
+FROM node:20-alpine
 
-# Stage 1: Dependencies
-FROM node:20-alpine AS deps
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Install dependencies
+COPY package.json package-lock.json ./
+RUN npm install
 
-# Install dependencies with increased timeout
-RUN npm config set fetch-retry-mintimeout 20000 && \
-    npm config set fetch-retry-maxtimeout 120000 && \
-    npm ci --only=production --verbose
-
-# Stage 2: Builder
-FROM node:20-alpine AS builder
-WORKDIR /app
-
-# Copy dependencies from deps stage
-COPY --from=deps /app/node_modules ./node_modules
+# Copy application files
 COPY . .
 
-# Set environment to production
-ENV NODE_ENV=production
+# Build with placeholders (will be replaced at runtime)
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_PUBLIC_SUPABASE_URL=https://placeholder.supabase.co
+ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=placeholder
+ENV NEXT_PUBLIC_API_URL=http://localhost:3001
 
-# Increase Node.js memory limit for build
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+RUN npm run build
 
-# Build application WITHOUT turbopack (production build)
-# Added verbose logging to see progress
-RUN echo "Starting Next.js build..." && \
-    npm run build && \
-    echo "Build completed successfully!" && \
-    ls -lah .next
-
-# Stage 3: Runner
-FROM node:20-alpine AS runner
-WORKDIR /app
-
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-
-# Create non-root user
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copy necessary files from builder
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-
-# Set correct permissions
-RUN chown -R nextjs:nodejs /app
-
-USER nextjs
-
-# Expose port (Render will override this with PORT env var)
+# Expose port
 EXPOSE 3000
 
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
-
-# Start the application
-CMD ["node", "server.js"]
+# Start
+CMD ["npm", "start"]
