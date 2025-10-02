@@ -338,7 +338,7 @@ export async function POST(req: Request) {
     })
 
     console.log('✅ StreamText criado, retornando resposta...')
-    return result.toDataStreamResponse()
+    return result.toUIMessageStreamResponse()
   } catch (error) {
     console.error('💥 Erro na API do chat:', error)
     return new Response(
