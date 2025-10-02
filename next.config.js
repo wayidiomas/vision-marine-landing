@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable standalone output for Docker
+  output: 'standalone',
+
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,

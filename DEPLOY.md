@@ -1,6 +1,6 @@
 # 🚀 Deploy Guide - Vision Marine Landing (Render)
 
-Este guia explica como fazer deploy da aplicação Vision Marine Landing no Render.
+Este guia explica como fazer deploy da aplicação Vision Marine Landing no Render usando Docker.
 
 ## 📋 Pré-requisitos
 
@@ -9,7 +9,7 @@ Este guia explica como fazer deploy da aplicação Vision Marine Landing no Rend
 - Conta Supabase (para backend)
 - Chave OpenAI API (para chat)
 
-## 🔧 Configuração no Render
+## 🐳 Deploy com Docker (Recomendado)
 
 ### 1. Criar novo Web Service
 
@@ -20,10 +20,10 @@ Este guia explica como fazer deploy da aplicação Vision Marine Landing no Rend
    - **Name**: `vision-marine-landing`
    - **Branch**: `main`
    - **Root Directory**: (deixe em branco)
-   - **Runtime**: `Node`
-   - **Build Command**: `npm install && npm run build`
-   - **Start Command**: `npm start`
+   - **Environment**: `Docker`
    - **Instance Type**: `Free` (para teste) ou `Starter` (produção)
+
+⚠️ **IMPORTANTE**: Selecione "Docker" como ambiente! Render detectará automaticamente o Dockerfile.
 
 ### 2. Configurar Variáveis de Ambiente
 
@@ -52,6 +52,39 @@ NEXT_PUBLIC_VISION_MARINE_API_KEY=vm_api_production_key_here
 1. Clique em "Create Web Service"
 2. Aguarde o build e deploy (5-10 minutos na primeira vez)
 3. Acesse a URL fornecida pelo Render: `https://vision-marine-landing.onrender.com`
+
+## 🧪 Testar Localmente com Docker
+
+Antes de fazer deploy, teste localmente:
+
+```bash
+# Build da imagem
+docker build -t vision-marine-landing .
+
+# Rodar container
+docker run -p 3000:3000 \
+  -e NEXT_PUBLIC_SUPABASE_URL=https://dkyqibicypnpeejhxuct.supabase.co \
+  -e NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_chave_aqui \
+  -e OPENAI_API_KEY=sua_chave_aqui \
+  vision-marine-landing
+
+# Acesse: http://localhost:3000
+```
+
+## ⚙️ Configurações Importantes
+
+### Next.js
+
+- ✅ **Standalone output habilitado** (`output: 'standalone'` em `next.config.js`)
+- ✅ **Turbopack apenas em dev** (`--turbopack` removido do build)
+- ✅ **Build otimizado para produção** (sem flags experimentais no build)
+
+### Docker
+
+- ✅ **Multi-stage build** (reduz tamanho da imagem)
+- ✅ **Non-root user** (segurança)
+- ✅ **Alpine Linux** (imagem leve)
+- ✅ **Build otimizado** (3 estágios: deps, builder, runner)
 
 ## 🔄 Atualizações Automáticas
 
