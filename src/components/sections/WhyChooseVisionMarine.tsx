@@ -58,7 +58,7 @@ export function WhyChooseVisionMarine() {
   ]
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24 px-4 lg:px-[276px]">
+    <section className="bg-white py-16 md:py-20 lg:py-24 px-4 lg:px-8 xl:px-16 2xl:px-24">
       <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 

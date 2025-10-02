@@ -53,7 +53,7 @@ export function Header() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 w-full px-6 lg:px-[276px] py-4 z-50 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 w-full px-4 lg:px-8 xl:px-16 2xl:px-24 py-4 z-50 transition-all duration-300"
         style={{
           backgroundColor: isScrolled ? 'rgba(7, 14, 44, 0.9)' : 'rgba(7, 14, 44, 1)',
           backdropFilter: isScrolled ? 'blur(12px)' : 'none',

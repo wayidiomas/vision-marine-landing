@@ -14,7 +14,7 @@ export function CompaniesHeroSection() {
 
   return (
     <section
-      className="relative px-4 lg:px-[276px] py-20 lg:py-24 bg-[#070e2c]"
+      className="relative px-4 lg:px-8 xl:px-16 2xl:px-24 py-20 lg:py-24 bg-[#070e2c]"
       data-name="Companies Hero Section"
     >
       {/* Background Pattern */}

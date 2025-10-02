@@ -159,7 +159,7 @@ export function CompaniesStatisticsSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#070e2c] relative py-16 md:py-20 lg:py-24 px-4 lg:px-[276px] overflow-hidden"
+      className="bg-[#070e2c] relative py-16 md:py-20 lg:py-24 px-4 lg:px-8 xl:px-16 2xl:px-24 overflow-hidden"
     >
 
       {/* Ocean Wave Background Pattern - Moving */}

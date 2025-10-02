@@ -10,7 +10,7 @@ const imgVector3 = "/assets/figma/cta/cta-vector-4.svg"
 
 export function CTASection() {
   return (
-    <section className="relative py-16 md:py-20 lg:py-24 px-4 lg:px-[276px] overflow-hidden">
+    <section className="relative py-16 md:py-20 lg:py-24 px-4 lg:px-8 xl:px-16 2xl:px-24 overflow-hidden">
       {/* Gradient Background */}
       <div
         className="absolute inset-0"

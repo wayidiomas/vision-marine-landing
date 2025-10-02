@@ -84,7 +84,7 @@ export function ChatWindow({ onClose, onNewMessage }: ChatWindowProps) {
 
   // Vercel AI SDK useChat hook (v5.0 format)
   const { messages, isLoading, error, sendMessage, clearError } = useChat({
-    api: '/api/chat',
+    api: '/api/chat/vision-marine',
     initialMessages,
     onFinish: () => {
       onNewMessage()

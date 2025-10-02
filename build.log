@@ -1,0 +1,29 @@
+
+> vision-marine-landing@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.3
+   - Environments: .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 58s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+ ⨯ useSearchParams() should be wrapped in a suspense boundary at page "/services/trainings". Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+    at g (C:\Vision-Marine\vision-marine-landing\.next\server\chunks\583.js:36:173761)
+    at m (C:\Vision-Marine\vision-marine-landing\.next\server\chunks\583.js:44:15825)
+    at I (C:\Vision-Marine\vision-marine-landing\.next\server\app\services\trainings\page.js:1:7304)
+    at n3 (C:\Vision-Marine\vision-marine-landing\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:2:82831)
+    at n6 (C:\Vision-Marine\vision-marine-landing\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:2:84601)
+    at n5 (C:\Vision-Marine\vision-marine-landing\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:2:104801)
+    at n7 (C:\Vision-Marine\vision-marine-landing\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:2:102219)
+    at n8 (C:\Vision-Marine\vision-marine-landing\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:2:83183)
+    at n6 (C:\Vision-Marine\vision-marine-landing\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:2:84647)
+    at n6 (C:\Vision-Marine\vision-marine-landing\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:2:101560)
+Error occurred prerendering page "/services/trainings". Read more: https://nextjs.org/docs/messages/prerender-error
+Export encountered an error on /services/trainings/page: /services/trainings, exiting the build.
+ ⨯ Next.js build worker exited with code: 1 and signal: null

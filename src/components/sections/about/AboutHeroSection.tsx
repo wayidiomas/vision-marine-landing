@@ -3,7 +3,7 @@
 export function AboutHeroSection() {
   return (
     <section
-      className="bg-[#070e2c] relative px-4 lg:px-[276px] py-16 md:py-20 lg:py-24 overflow-hidden"
+      className="bg-[#070e2c] relative px-4 lg:px-8 xl:px-16 2xl:px-24 py-16 md:py-20 lg:py-24 overflow-hidden"
       data-name="About Hero Section"
     >
       {/* Background Pattern */}

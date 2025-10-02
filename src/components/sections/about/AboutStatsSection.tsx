@@ -27,7 +27,7 @@ export function AboutStatsSection() {
   ]
 
   return (
-    <section className="relative py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-[276px] bg-[#4cb7e0] overflow-hidden">
+    <section className="relative py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 bg-[#4cb7e0] overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div
