@@ -53,7 +53,15 @@ NEXT_PUBLIC_VISION_MARINE_API_KEY=vm_api_production_key_here
 1. Render passa as env vars como `ARG` para o Docker build
 2. Dockerfile converte `ARG` → `ENV` antes do `npm run build`
 3. Next.js embute os valores `NEXT_PUBLIC_*` no bundle JavaScript
-4. No runtime, o bundle já tem os valores corretos
+4. Variáveis **SEM** `NEXT_PUBLIC_` (como `OPENAI_API_KEY`) são usadas no **servidor** em runtime
+5. O Render precisa ter **TODAS** as env vars configuradas (tanto para build quanto para runtime)
+
+⚠️ **ATENÇÃO ESPECIAL**: `OPENAI_API_KEY`
+- Esta variável é usada **apenas no servidor** (API routes)
+- NÃO tem prefixo `NEXT_PUBLIC_` (por segurança)
+- Precisa estar disponível em **RUNTIME** no Render
+- Se não estiver configurada, o chat NÃO funcionará
+- O erro aparecerá nos logs do Render como: `OPENAI_API_KEY não configurada`
 
 **Para verificar se funcionou:**
 Após o deploy, acesse: `https://seu-site.onrender.com/api/debug`
@@ -64,11 +72,21 @@ Deve retornar:
   "supabase_url": "https://dkyqibicypnpeejhxuct.supabase.co",
   "has_supabase_url": true,
   "has_supabase_key": true,
-  "is_placeholder": false  ← DEVE SER FALSE!
+  "is_placeholder": false,
+  "has_openai_key": true,  ← DEVE SER TRUE!
+  "openai_key_length": 51,  ← Deve ser > 0
+  "health": {
+    "supabase": true,
+    "openai": true,       ← DEVE SER TRUE!
+    "all_ok": true        ← DEVE SER TRUE!
+  }
 }
 ```
 
-Se `is_placeholder: true`, as env vars não foram passadas corretamente no build.
+**Problemas comuns:**
+- `is_placeholder: true` → Env vars `NEXT_PUBLIC_*` não foram passadas no build
+- `has_openai_key: false` → `OPENAI_API_KEY` não configurada no Render
+- `health.all_ok: false` → Alguma env var crítica está faltando
 
 ### 3. Deploy
 

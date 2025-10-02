@@ -1,7 +1,24 @@
-import { openai } from '@ai-sdk/openai'
+import { createOpenAI } from '@ai-sdk/openai'
 import { streamText, generateText, tool, embed, convertToModelMessages } from 'ai'
 import { z } from 'zod'
 import { supabase } from '@/lib/supabase'
+
+// CRITICAL: Validate and configure OpenAI API Key
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY
+if (!OPENAI_API_KEY) {
+  console.error('❌ ERRO CRÍTICO: OPENAI_API_KEY não configurada!')
+  console.error('📋 Ambiente:', process.env.NODE_ENV)
+  console.error('📋 Todas as env vars disponíveis:', Object.keys(process.env).filter(k => k.includes('OPEN')))
+  throw new Error('OPENAI_API_KEY não está configurada. Configure no Render Environment Variables.')
+}
+
+console.log('✅ OPENAI_API_KEY encontrada (length:', OPENAI_API_KEY.length, ')')
+console.log('✅ Primeira parte da chave:', OPENAI_API_KEY.substring(0, 10) + '...')
+
+// Create OpenAI client with explicit API key
+const openai = createOpenAI({
+  apiKey: OPENAI_API_KEY,
+})
 
 // Sistema de mensagens para a Vision Marine AI
 const VISION_MARINE_SYSTEM_PROMPT = `
