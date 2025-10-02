@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef } from 'react'
 
 // Assets from Figma
-const imgCarlosMendes = "http://localhost:3845/assets/9bbdfb06a5eae3ca01387e38cee556cb0ba93eb3.png"
-const imgRobertoCosta = "http://localhost:3845/assets/0d5da6ab018faf09b0940ac3e0ab4d6d514c431f.png"
-const imgSvg = "http://localhost:3845/assets/4b925ba4927f944016ec1e102e0c42ddfd5012fb.svg"
-const imgSvg1 = "http://localhost:3845/assets/dd4abcc08f44f451064f61de00065ebf3f13b768.svg"
+const imgCarlosMendes = "/assets/figma/testimonials/carlos-mendes.png"
+const imgRobertoCosta = "/assets/figma/testimonials/roberto-costa.png"
+const imgSvg = "/assets/figma/testimonials/testimonials-icon-1.svg"
+const imgSvg1 = "/assets/figma/testimonials/testimonials-icon-2.svg"
 
 // Additional placeholder images for more testimonials
 const imgAnaRodrigues = imgCarlosMendes // Reusing for demo

@@ -3,10 +3,10 @@
 import Link from 'next/link'
 
 // Assets from Figma
-const imgVector = "http://localhost:3845/assets/f4a931db8943d2536ef7cde59612791312b244c2.svg"
-const imgVector1 = "http://localhost:3845/assets/f2835f9984ecff53bb6b2034467fdfbbb835a21e.svg"
-const imgVector2 = "http://localhost:3845/assets/b19d14a6b160e2b6bff106c88829c249195e66df.svg"
-const imgVector3 = "http://localhost:3845/assets/244449c820b692dae802ff6c0bf0aca297635dbe.svg"
+const imgVector = "/assets/figma/cta/cta-vector-1.svg"
+const imgVector1 = "/assets/figma/cta/cta-vector-2.svg"
+const imgVector2 = "/assets/figma/cta/cta-vector-3.svg"
+const imgVector3 = "/assets/figma/cta/cta-vector-4.svg"
 
 export function CTASection() {
   return (

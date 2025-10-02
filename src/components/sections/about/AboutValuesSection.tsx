@@ -1,10 +1,10 @@
 'use client'
 
 // Assets from Figma
-const iconQualidade = "http://localhost:3845/assets/1d6f58639b6f04a6cf5c40eb40e1a13a6eca6406.svg"
-const iconExperiencia = "http://localhost:3845/assets/ae7e987f5e308c7e130d27c49a62678081324bae.svg"
-const iconComunidade = "http://localhost:3845/assets/c89d91769d846257e3c8b94dcc3ce970d9ab7f80.svg"
-const iconInovacao = "http://localhost:3845/assets/799494d827f127f86c5e57007d86aea469da3089.svg"
+const iconQualidade = "/assets/figma/about/qualidade-icon.svg"
+const iconExperiencia = "/assets/figma/about/experiencia-icon.svg"
+const iconComunidade = "/assets/figma/about/comunidade-icon.svg"
+const iconInovacao = "/assets/figma/about/inovacao-icon.svg"
 
 export function AboutValuesSection() {
   const values = [

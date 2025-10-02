@@ -1,12 +1,12 @@
 'use client'
 
-// Assets from Figma
-const customTrainingIcon = "http://localhost:3845/assets/543f62422d49fcf64113bbf61bb494bb197f7a7f.svg"
-const largeScaleIcon = "http://localhost:3845/assets/c89d91769d846257e3c8b94dcc3ce970d9ab7f80.svg"
-const certificationIcon = "http://localhost:3845/assets/ae7e987f5e308c7e130d27c49a62678081324bae.svg"
-const roiIcon = "http://localhost:3845/assets/383cbf89aab1b130e8cb501022886c0b384a83ed.svg"
-const assessmentIcon = "http://localhost:3845/assets/2c0f14fd6d435b16cd5f12838166e112f8d49d28.svg"
-const reportsIcon = "http://localhost:3845/assets/89bbf97087f236a0511cf8ffd3e8d0fa8917aadd.svg"
+// Assets from Figma - now served locally
+const customTrainingIcon = "/assets/figma/companies/custom-training-icon.svg"
+const largeScaleIcon = "/assets/figma/companies/large-scale-icon.svg"
+const certificationIcon = "/assets/figma/companies/certification-icon.svg"
+const roiIcon = "/assets/figma/companies/roi-icon.svg"
+const assessmentIcon = "/assets/figma/companies/assessment-icon.svg"
+const reportsIcon = "/assets/figma/companies/reports-icon.svg"
 
 interface FeatureCardProps {
   icon: string

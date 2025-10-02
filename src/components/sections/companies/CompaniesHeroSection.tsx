@@ -5,9 +5,9 @@ import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/contexts/language-context'
 
 // Assets from Figma
-const phoneIcon = "http://localhost:3845/assets/b19d14a6b160e2b6bff106c88829c249195e66df.svg"
-const documentIcon1 = "http://localhost:3845/assets/5c5e1f1fd3dfde8b6ddd7abf7b83f9e4a20251c8.svg"
-const documentIcon2 = "http://localhost:3845/assets/783e9fad5cd70f51a37c1bd850ef00755788e8c5.svg"
+const phoneIcon = "/assets/figma/companies/phone-icon.svg"
+const documentIcon1 = "/assets/figma/companies/document-icon-1.svg"
+const documentIcon2 = "/assets/figma/companies/document-icon-2.svg"
 
 export function CompaniesHeroSection() {
   const { t } = useLanguage()

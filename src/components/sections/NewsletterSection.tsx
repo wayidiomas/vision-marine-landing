@@ -3,8 +3,8 @@
 import { useState } from 'react'
 
 // Assets from Figma
-const imgSvg = "http://localhost:3845/assets/2556629e321633a383b9cdc50c0e5518c732d9f5.svg"
-const imgSvg1 = "http://localhost:3845/assets/061ddfda1907bf1f6ef26c6d4044390389bbad79.svg"
+const imgSvg = "/assets/figma/newsletter/newsletter-icon-1.svg"
+const imgSvg1 = "/assets/figma/newsletter/newsletter-icon-2.svg"
 
 export function NewsletterSection() {
   const [email, setEmail] = useState('')

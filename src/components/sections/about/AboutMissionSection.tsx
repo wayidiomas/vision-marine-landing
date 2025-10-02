@@ -1,7 +1,7 @@
 'use client'
 
 // Asset from Figma
-const imgPortoMaritimo = "http://localhost:3845/assets/da331f6f1f93224bb02d6f187fbe747be3719910.png"
+const imgPortoMaritimo = "/assets/figma/about/porto-maritimo.png"
 
 export function AboutMissionSection() {
   return (

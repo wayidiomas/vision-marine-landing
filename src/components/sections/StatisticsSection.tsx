@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef } from 'react'
 
 // Assets from Figma
-const imgSvg = "http://localhost:3845/assets/c89d91769d846257e3c8b94dcc3ce970d9ab7f80.svg"
-const imgSvg1 = "http://localhost:3845/assets/537135f79c9e23f7320a9785b5f58e4886273585.svg"
-const imgSvg2 = "http://localhost:3845/assets/ae7e987f5e308c7e130d27c49a62678081324bae.svg"
-const imgSvg3 = "http://localhost:3845/assets/a0457e5fe91da5061387fcedcdab415684b7914a.svg"
+const imgSvg = "/assets/figma/statistics/stats-icon-1.svg"
+const imgSvg1 = "/assets/figma/statistics/stats-icon-2.svg"
+const imgSvg2 = "/assets/figma/statistics/stats-icon-3.svg"
+const imgSvg3 = "/assets/figma/statistics/stats-icon-4.svg"
 
 interface StatisticCardProps {
   icon: string

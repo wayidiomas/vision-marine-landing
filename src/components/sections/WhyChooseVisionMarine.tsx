@@ -1,11 +1,11 @@
 'use client'
 
 // Assets from Figma
-const imgTreinamentoNaval = "http://localhost:3845/assets/dc4adee40a11709e616dd96804bcc90d81cd1c89.png"
-const imgSvg = "http://localhost:3845/assets/90c3062d3b6c3fd51741d8dcca749adcbaa1ae4a.svg"
-const imgSvg1 = "http://localhost:3845/assets/99d011682e0511fb81a660ad2140a71496b4591e.svg"
-const imgSvg2 = "http://localhost:3845/assets/5915d9f2f8b925ca4f49d431c83e043ed554dd40.svg"
-const imgSvg3 = "http://localhost:3845/assets/3f47c8d5c630d6dc54572e89be3e89b15a9ea31d.svg"
+const imgTreinamentoNaval = "/assets/figma/why-choose/treinamento-naval.png"
+const imgSvg = "/assets/figma/why-choose/why-icon-1.svg"
+const imgSvg1 = "/assets/figma/why-choose/why-icon-2.svg"
+const imgSvg2 = "/assets/figma/why-choose/why-icon-3.svg"
+const imgSvg3 = "/assets/figma/why-choose/why-icon-4.svg"
 
 interface FeatureItemProps {
   icon: string

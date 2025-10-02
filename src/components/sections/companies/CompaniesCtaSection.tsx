@@ -4,9 +4,9 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 // Assets from Figma
-const phoneIcon = "http://localhost:3845/assets/811a991b345bfbb5e3195c895fde4e4207bcf479.svg"
-const documentIcon1 = "http://localhost:3845/assets/5c5e1f1fd3dfde8b6ddd7abf7b83f9e4a20251c8.svg"
-const documentIcon2 = "http://localhost:3845/assets/783e9fad5cd70f51a37c1bd850ef00755788e8c5.svg"
+const phoneIcon = "/assets/figma/companies/phone-icon.svg"
+const documentIcon1 = "/assets/figma/companies/document-icon-1.svg"
+const documentIcon2 = "/assets/figma/companies/document-icon-2.svg"
 
 export function CompaniesCtaSection() {
   return (

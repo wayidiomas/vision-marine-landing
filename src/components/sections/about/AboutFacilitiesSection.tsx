@@ -1,9 +1,9 @@
 'use client'
 
 // Assets from Figma
-const imgSalaDeAulaModerna = "http://localhost:3845/assets/04ed5fa7def09453699ee8b4ad66c64c86e35ce2.png"
-const imgLaboratorioDeSimulacao = "http://localhost:3845/assets/a23604c60f9e6270453ebb75e8f5b6d343e1a59f.png"
-const imgCentroDeEstudos = "http://localhost:3845/assets/5406bb3ddeff5c339fa60bed9e15e299c4cab9fc.png"
+const imgSalaDeAulaModerna = "/assets/figma/facilities/sala-aula-moderna.png"
+const imgLaboratorioDeSimulacao = "/assets/figma/facilities/laboratorio-simulacao.png"
+const imgCentroDeEstudos = "/assets/figma/facilities/centro-estudos.png"
 
 export function AboutFacilitiesSection() {
   const facilities = [

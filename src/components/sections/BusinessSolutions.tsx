@@ -1,14 +1,14 @@
 'use client'
 
 // Assets from Figma
-const imgEquipeEmTreinamentoCorporativo = "http://localhost:3845/assets/dc4adee40a11709e616dd96804bcc90d81cd1c89.png"
-const imgSvg = "http://localhost:3845/assets/55ab9f1d9096d62684e713414181510df0a903ee.svg"
-const imgSvg1 = "http://localhost:3845/assets/620d654561bd4cb5bcc129d8f21ae5d8112c718b.svg"
-const imgSvg2 = "http://localhost:3845/assets/2f094ba6f82679ff7b99739bda20157712620294.svg"
-const imgSvg3 = "http://localhost:3845/assets/383cbf89aab1b130e8cb501022886c0b384a83ed.svg"
-const imgVector = "http://localhost:3845/assets/5ade6605a0f5819c6cc1f7c1ba8b0cf2cd9f68d2.svg"
-const imgVector1 = "http://localhost:3845/assets/bf55094dc985d65ad569e2228e69066e6bd6fef4.svg"
-const imgVector2 = "http://localhost:3845/assets/b19d14a6b160e2b6bff106c88829c249195e66df.svg"
+const imgEquipeEmTreinamentoCorporativo = "/assets/figma/business/equipe-treinamento.png"
+const imgSvg = "/assets/figma/business/business-icon-1.svg"
+const imgSvg1 = "/assets/figma/business/business-icon-2.svg"
+const imgSvg2 = "/assets/figma/business/business-icon-3.svg"
+const imgSvg3 = "/assets/figma/business/business-icon-4.svg"
+const imgVector = "/assets/figma/business/business-vector-1.svg"
+const imgVector1 = "/assets/figma/business/business-vector-2.svg"
+const imgVector2 = "/assets/figma/business/business-vector-3.svg"
 
 interface ServiceCardProps {
   icon: string
