@@ -1,5 +1,5 @@
 import { createOpenAI } from '@ai-sdk/openai'
-import { streamText, generateText, tool, embed, convertToModelMessages } from 'ai'
+import { streamText, generateText, tool, embed } from 'ai'
 import { z } from 'zod'
 import { supabase } from '@/lib/supabase'
 
@@ -288,8 +288,7 @@ export async function POST(req: Request) {
     const body = await req.json()
     const { messages } = body
 
-    console.log('📥 Body recebido:', JSON.stringify(body, null, 2))
-    console.log('📥 Mensagens extraídas:', JSON.stringify(messages, null, 2))
+    console.log('📥 Mensagens recebidas:', messages.length, 'mensagens')
 
     // Validar se messages existe e é um array
     if (!messages || !Array.isArray(messages)) {
@@ -319,50 +318,15 @@ export async function POST(req: Request) {
       )
     }
 
-    console.log('✅ Messages válido, convertendo formato...')
+    console.log('✅ Messages válido, processando...')
 
-    // Converter mensagens do formato v4 (content) para v5 (parts)
-    const convertedMessages = messages.map(message => {
-      // Se já estiver no formato v5 (com parts), manter
-      if (message.parts) {
-        return message
-      }
-
-      // Se estiver no formato v4 (com content), converter para v5
-      if (message.content) {
-        return {
-          ...message,
-          parts: [
-            {
-              type: 'text',
-              text: message.content
-            }
-          ]
-        }
-      }
-
-      // Se não tiver nem content nem parts, erro
-      throw new Error(`Mensagem inválida: ${JSON.stringify(message)}`)
-    })
-
-    console.log('✅ Messages convertidas para v5:', JSON.stringify(convertedMessages, null, 2))
-
-    // Verificar se convertedMessages está válido antes de converter
-    if (!convertedMessages || !Array.isArray(convertedMessages)) {
-      throw new Error('Converted messages is not a valid array')
-    }
-
-    const modelMessages = convertToModelMessages(convertedMessages)
-    console.log('✅ Model messages:', JSON.stringify(modelMessages, null, 2))
-
-    console.log('🤖 Iniciando streamText com gpt-4o...')
+    // O useChat já envia no formato correto { role, content, id }
+    // Apenas converter para formato do modelo usando a função do AI SDK
     const result = await streamText({
       // Modelo atual: gpt-4o (funciona com streaming)
       model: openai('gpt-4o'),
-      // Para usar gpt-5-mini no futuro quando streaming for liberado:
-      // model: openai('gpt-5-mini'),
       system: VISION_MARINE_SYSTEM_PROMPT,
-      messages: modelMessages,
+      messages, // Passar diretamente as mensagens
       tools: {
         getCourseInformation,
         getContactInformation,
@@ -373,8 +337,8 @@ export async function POST(req: Request) {
       temperature: 0.7,
     })
 
-    console.log('✅ StreamText criado, convertendo para UIMessageStreamResponse...')
-    return result.toUIMessageStreamResponse()
+    console.log('✅ StreamText criado, retornando resposta...')
+    return result.toDataStreamResponse()
   } catch (error) {
     console.error('💥 Erro na API do chat:', error)
     return new Response(
