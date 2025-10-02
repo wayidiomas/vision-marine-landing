@@ -9,8 +9,10 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install dependencies with increased timeout
+RUN npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000 && \
+    npm ci --only=production --verbose
 
 # Stage 2: Builder
 FROM node:20-alpine AS builder
@@ -24,8 +26,15 @@ COPY . .
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Increase Node.js memory limit for build
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
 # Build application WITHOUT turbopack (production build)
-RUN npm run build
+# Added verbose logging to see progress
+RUN echo "Starting Next.js build..." && \
+    npm run build && \
+    echo "Build completed successfully!" && \
+    ls -lah .next
 
 # Stage 3: Runner
 FROM node:20-alpine AS runner

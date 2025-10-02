@@ -1,0 +1,28 @@
+# Dockerfile simplificado para debugging no Render
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy all files
+COPY package*.json ./
+COPY . .
+
+# Install dependencies
+RUN echo "=== Installing dependencies ===" && \
+    npm install && \
+    echo "=== Dependencies installed ==="
+
+# Build
+RUN echo "=== Building application ===" && \
+    npm run build && \
+    echo "=== Build complete ===" && \
+    ls -la .next
+
+# Expose port
+EXPOSE 3000
+
+# Start
+CMD echo "=== Starting application ===" && \
+    echo "PORT: $PORT" && \
+    echo "NODE_ENV: $NODE_ENV" && \
+    npm start

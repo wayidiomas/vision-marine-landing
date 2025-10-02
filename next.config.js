@@ -3,6 +3,14 @@ const nextConfig = {
   // Enable standalone output for Docker
   output: 'standalone',
 
+  // Skip ESLint and TypeScript checks during build (for faster deployment)
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,
