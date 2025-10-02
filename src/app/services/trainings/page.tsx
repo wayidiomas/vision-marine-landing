@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { Clock, Users, Star, Filter, X, TrendingUp, Award, BookOpen, Check, ChevronRight, PlayCircle, ClipboardList, ShoppingCart, Mail, Calendar, Target, Flag, ChevronLeft } from 'lucide-react'
 
@@ -193,7 +193,7 @@ const priceRanges = [
 ]
 const durations = ['Todas', 'Até 30h', '30h - 50h', 'Acima de 50h']
 
-export default function TrainingsPage() {
+function TrainingsPageContent() {
   const searchParams = useSearchParams()
   const courseTrainingId = searchParams?.get('course_training')
 
@@ -1767,5 +1767,15 @@ function TrainingDetailsPage({ training }: { training: Training }) {
         </div>
       )}
     </div>
+  )
+}
+
+
+// Wrapper component with Suspense boundary
+export default function TrainingsPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div className="text-xl">Carregando...</div></div>}>
+      <TrainingsPageContent />
+    </Suspense>
   )
 }
