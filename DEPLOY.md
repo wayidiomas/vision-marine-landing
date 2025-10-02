@@ -27,6 +27,8 @@ Este guia explica como fazer deploy da aplicação Vision Marine Landing no Rend
 
 ### 2. Configurar Variáveis de Ambiente
 
+⚠️ **CRÍTICO**: As variáveis `NEXT_PUBLIC_*` são embutidas no bundle durante o build! O Dockerfile usa `ARG` para recebê-las do Render.
+
 No painel do Render, vá em "Environment" e adicione:
 
 ```bash
@@ -46,6 +48,27 @@ OPENAI_API_KEY=sk-proj-SUA_NOVA_CHAVE_AQUI
 # Vision Marine API Key (opcional, para autenticação backend)
 NEXT_PUBLIC_VISION_MARINE_API_KEY=vm_api_production_key_here
 ```
+
+**Como funciona:**
+1. Render passa as env vars como `ARG` para o Docker build
+2. Dockerfile converte `ARG` → `ENV` antes do `npm run build`
+3. Next.js embute os valores `NEXT_PUBLIC_*` no bundle JavaScript
+4. No runtime, o bundle já tem os valores corretos
+
+**Para verificar se funcionou:**
+Após o deploy, acesse: `https://seu-site.onrender.com/api/debug`
+
+Deve retornar:
+```json
+{
+  "supabase_url": "https://dkyqibicypnpeejhxuct.supabase.co",
+  "has_supabase_url": true,
+  "has_supabase_key": true,
+  "is_placeholder": false  ← DEVE SER FALSE!
+}
+```
+
+Se `is_placeholder: true`, as env vars não foram passadas corretamente no build.
 
 ### 3. Deploy
 
