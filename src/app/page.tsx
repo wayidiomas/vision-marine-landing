@@ -57,7 +57,7 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section
-        className="relative px-4 lg:px-[276px] py-20 lg:py-20 bg-cover bg-center bg-no-repeat"
+        className="relative px-4 lg:px-8 xl:px-16 2xl:px-24 py-20 bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{ backgroundImage: "url('/hero-background.png')" }}
       >
         {/* Overlay with gradient */}
@@ -79,9 +79,9 @@ export default function Home() {
           <div className="absolute right-20 top-40 w-16 h-16 rounded-full bg-[#4cb7e0] blur lg:hidden"></div>
         </div>
 
-        <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 w-full max-w-[1400px] mx-auto">
+        <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-10 xl:gap-12 w-full max-w-7xl mx-auto">
           {/* Content */}
-          <div className="flex flex-col gap-8 w-full lg:w-[660px] lg:flex-shrink-0">
+          <div className="flex flex-col gap-8 w-full lg:w-1/2 lg:flex-shrink-0">
             {/* Main Heading */}
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
@@ -159,7 +159,7 @@ export default function Home() {
           </div>
 
           {/* Right Content - Card (Desktop) */}
-          <div className="w-[660px] flex-shrink-0 hidden lg:block">
+          <div className="w-full lg:w-1/2 flex-shrink-0 hidden lg:block">
             <div className="bg-gradient-to-r from-[#4cb7e0] to-[#3a9bc1] p-8 rounded-2xl">
               <div className="bg-white p-6 rounded-xl">
                 <h3 className="text-xl font-bold text-[#070e2c] mb-4 leading-7">
